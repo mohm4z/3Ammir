@@ -1,0 +1,38 @@
+﻿<div class="header">
+    @await Component.InvokeAsync("Widget", new { widgetZone = "header_before" })
+
+    <div class="header-upper">
+        <div class="Myheader-links-wrapper">
+            <img src="~/Themes/NewTheme/Content/images/tlicon.png" class="Mylinkflo" /> <p class="Mylinkflo">+966-555-3AMMIR</p>
+        </div>
+
+        <div class="Myheader-links-wrapper">
+            <img src="~/Themes/NewTheme/Content/images/msicon.png" class="Mylinkflo" /> <p class="Mylinkflo">contact@3ammir.com</p>
+        </div>
+        
+        <div class="header-links-wrapper">
+            @await Component.InvokeAsync("HeaderLinks")
+            @await Component.InvokeAsync("FlyoutShoppingCart")
+        </div>
+
+        <div class="header-selectors-wrapper">
+            @await Component.InvokeAsync("TaxTypeSelector")
+            @*@await Component.InvokeAsync("CurrencySelector")
+            @await Component.InvokeAsync("LanguageSelector")*@
+            @await Component.InvokeAsync("Widget", new { widgetZone = "header_selectors" })
+        </div>
+    </div>
+
+    @await Component.InvokeAsync("Widget", new { widgetZone = "header_middle" })
+
+    @*<div class="header-lower">
+            <div class="header-logo">
+                @await Component.InvokeAsync("Logo")
+            </div>
+            <div class="search-box store-search-box">
+                @await Component.InvokeAsync("SearchBox")
+            </div>
+        </div>*@
+
+    @await Component.InvokeAsync("Widget", new { widgetZone = "header_after" })
+</div>

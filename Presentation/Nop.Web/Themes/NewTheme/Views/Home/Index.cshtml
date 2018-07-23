@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "_ColumnsOne";
+
+    //page class
+    Html.AppendPageCssClassParts("html-home-page");
+}
+<div class="home-page">
+    <div class="page-body">
+        @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_top" })
+        @await Component.InvokeAsync("TopicBlock", new { systemName = "HomePageText" })
+        @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_categories" })
+        @await Component.InvokeAsync("HomepageCategories")
+
+        <div class="master-wrapper-content">
+            @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_products" })
+            @await Component.InvokeAsync("HomepageProducts")
+            @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_best_sellers" })
+            @await Component.InvokeAsync("HomepageBestSellers")
+            @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_news" })
+
+            @************* moved to HomepageProducts *****************@
+            @*@await Component.InvokeAsync("HomepageNews")
+                @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_poll" })
+                @await Component.InvokeAsync("HomepagePolls")
+                @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_bottom" })*@
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/adv2.png" /></a>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/adv3.png" /></a>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/adv4.png" /></a>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/adv5.png" /></a>
+            </div>
+        </div>
+
+
+        <div class="MyHomeContainer" style="margin-top:30px;">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/image1.jpg" /></a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/image2.jpg" /></a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <a href="#"><img class="MyimgHover" style="width: 100%; height:240px" src="~/Themes/NewTheme/Content/images/Adv/image3.jpg" /></a>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-12">
+                            <a href="#"><img class="MyimgHover" style="width: 100%; height:200px" src="~/Themes/NewTheme/Content/images/Adv/adv7.png" /></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <a href="#"><img class="MyimgHover" style="width: 100%; height:460px" src="~/Themes/NewTheme/Content/images/Adv/adv6.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

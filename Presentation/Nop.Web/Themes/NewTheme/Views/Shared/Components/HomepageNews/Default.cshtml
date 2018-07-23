@@ -1,0 +1,56 @@
+﻿@model HomePageNewsItemsModel
+@using Nop.Web.Framework.UI;
+
+@if (Model.NewsItems.Count > 0)
+{
+
+    @*@{
+            Html.AddCssFileParts(Uri.co)
+        }*@
+
+    @*<link href="~/Themes/NewTheme/Content/css/SmSl/default.css" rel="stylesheet" />
+    <link href="~/Themes/NewTheme/Content/css/SmSl/reset.css" rel="stylesheet" />
+    <link href="~/Themes/NewTheme/Content/css/SmSl/slideshow.css" rel="stylesheet" />*@
+
+
+    <div class="news-list-homepage Mynewss">
+
+        <div class="myprodMunu Mynewstit">
+            <div class="col-md-12 Myprodcol Mynewstit2">
+                <strong>@T("News")</strong>
+            </div>
+
+        </div>
+
+        @*<div class="title">
+                <strong>@T("News")</strong>
+            </div>*@
+
+        <div class="news-items Mynewss" style="overflow-y:auto">
+
+            @foreach (var item in Model.NewsItems)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="news-item">
+                            <div class="news-head">
+                                <a class="news-title" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
+                                <span class="news-date">-@item.CreatedOn.ToString("D")</span>
+                            </div>
+                            <div class="news-body">
+                                @Html.Raw(item.Full)
+                            </div>
+                            <div class="buttons">
+                                <a href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })" class="read-more">@T("News.MoreInfo")</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="view-all">
+            <a href="@Url.RouteUrl("NewsArchive")">@T("News.ViewAll")</a>
+        </div>
+    </div>
+}

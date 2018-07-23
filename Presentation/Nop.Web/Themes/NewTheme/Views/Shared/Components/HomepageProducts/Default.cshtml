@@ -1,0 +1,168 @@
+﻿@model IList<ProductOverviewModel>
+
+<div class="row">
+
+    <div class="row">
+        <div class="col-md-9">
+            @if (Model.Count > 0)
+            {
+                <div class="product-grid home-page-product-grid">
+                    <div class="myprodMunu">
+                        <div class="col-md-2 Myprodcol">
+                            <a class="Myproda" id="Frista1" href="#">@T("HomePage.Products")</a>
+                        </div>
+
+                        <div class="col-md-2 Myprodcol">
+                            <a class="Myproda" href="#">Our Venders</a>
+                        </div>
+
+                        <div class="col-md-6 Myprodcol">
+                            <div class="col-md-4">
+                                <a class="Myproda2" href="#">Featuered</a>
+                            </div>
+
+                            <div class="col-md-4">
+                                <a class="Myproda2" href="#">New Brands</a>
+                            </div>
+
+                            <div class="col-md-4">
+                                <a class="Myproda2" href="#">Best Seller</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 Myprodcol2">
+                            <a href="#"><img src="~/Themes/NewTheme/Content/images/Arrows/aro2.gif" /></a>
+                            <a href="#"><img src="~/Themes/NewTheme/Content/images/Arrows/aro1.gif" /></a>
+                        </div>
+                    </div>
+
+                    <div class="item-grid">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="item-box">
+                                        @await Html.PartialAsync("_ProductBox", item)
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-3">
+            <div class="row" style="margin-bottom:50px;">
+                @await Component.InvokeAsync("HomepageNews")
+                @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_poll" })
+
+            </div>
+
+            <div class="row">
+                <a href="#"><img class="MyimgHover" style="width: 100%; height:424px;" src="~/Themes/NewTheme/Content/images/Adv/adv1.png" /></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#Frista1').focus();
+        //document.getElementById('Frista1').focus();
+    </script>
+
+    @*<div class="row" style="margin:30px 0">
+            <div class="col-me-8 col-lg-8">
+                <fieldset style="margin-left: 10px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.2055419870535!2d46.68759201458282!3d24.685460084136785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f032efa1a19cd%3A0xd9f38c30e35ab986!2sTelenoc!5e0!3m2!1sen!2s!4v1529652342413" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+
+                    <div id="googleMap" style="height: 380px; width: 100%;"> </div>
+        <script>
+            // <![CDATA[
+            function myMap() {
+                var myCenter = new google.maps.LatLng(20.296100, 85.824500);
+                var mapProp = { center: myCenter, zoom: 12, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.ROADMAP };
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                var marker = new google.maps.Marker({ position: myCenter });
+                marker.setMap(map);
+            }
+        <script src="https://maps.googleapis.com/maps/api/js?key=put_your_api_key_here&amp;callback=myMap"></script>
+                </fieldset>
+            </div>
+
+            <div class="col-me-4 col-lg-4">
+                <h3>Contact Information</h3>
+                <hr style="border: 1px solid #ffd800; width: 20%;" />
+
+                <div class="header-upper">
+                    <div class="Myheader-links-wrapper" style="float:none;">
+                        <img style="margin: 5px 0 0 0;" src="../images/ContactUs/phone.png" class="Mylinkflo" /> <p class="Mylinkflo" style="margin: 0; padding: 0 10px;">+966-555-3AMMIR</p>
+                    </div>
+                    <br />
+                    <div class="Myheader-links-wrapper" style="float:none;">
+                        <img style="margin: 5px 0 0 0;" src="../images/ContactUs/mail.png" class="Mylinkflo" /> <p class="Mylinkflo" style="margin: 0; padding: 0 10px;">contact@3ammir.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    @*<div class="row">
+            <div class="col-lg-12" style="padding: 0 20%;">
+                <p style="text-align: center;">Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-me-6 col-lg-6"><img class="pull-right" src="../images/AboutusImgs/abt2.png" alt="" /></div>
+            <div class="col-me-6 col-lg-6">
+                Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences
+                Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences
+                Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences
+                Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences
+                Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences
+                Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences
+            </div>
+        </div>
+
+        <div class="row" style="margin:10px 0;">
+            <div class="col-lg-12" style="padding: 0 20%;">
+                <p style="text-align: center;">Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences</p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-12" style="text-align: center;"><img style="width: 90%; height: 140px;" src="../images/AboutusImgs/adv7.png" alt="" /></div>
+        </div>
+
+        <div class="row" style="margin:10px 0;">
+            <div class="col-lg-12" style="padding: 0 20%;">
+                <p style="text-align: center;">Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences</p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-me-6 col-lg-6">
+                <h3>Cammpany Visiun</h3>
+                <hr style="border: 1px solid #ffd800; width: 20%;" />
+                <p>My Company My CompanyMy CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy CompanyMy My Company My CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy CompanyMy My Company My CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy Company <br /> My Company My CompanyMy CompanyMy CompanyMy</p>
+            </div>
+            <div class="col-me-6 col-lg-6"><img src="../images/AboutusImgs/abt2.png" alt="" /></div>
+        </div>
+
+        <div class="row" style="margin:10px 0;">
+            <div class="col-lg-12" style="padding: 0 20%;">
+                <p style="text-align: center;">Our company may have to take disciplinary action against employees who repeatedly or intentionally fail to follow our code of conduct. Disciplinary actions will vary depending on the violation. Possible consequences</p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-me-6 col-lg-6"><img class="pull-right" src="../images/AboutusImgs/abt3.png" alt="" /></div>
+            <div class="col-me-6 col-lg-6">
+                <h3>Our Missin</h3>
+                <hr style="border: 1px solid #ffd800; width: 20%;" />
+                <p>My Company My CompanyMy CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy CompanyMy</p>
+                <p>My Company My CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy CompanyMy</p>
+                <p>My Company My CompanyMy CompanyMy <br /> My Company My CompanyMy CompanyMy Company <br /> My Company My CompanyMy CompanyMy CompanyMy</p>
+            </div>
+        </div>*@
+
+</div>

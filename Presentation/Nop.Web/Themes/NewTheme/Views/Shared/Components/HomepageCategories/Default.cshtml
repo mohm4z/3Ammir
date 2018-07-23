@@ -1,0 +1,225 @@
+﻿@model IList<CategoryModel>
+
+
+@if (Model.Count > 0)
+{
+    @*<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Themes/NewTheme/Content/images/Adv/adv4.png" />
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Themes/NewTheme/Content/images/Adv/adv5.png" />
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>*@
+
+
+
+    <div class="category-grid home-page-category-grid" style="margin-bottom:180px;">
+        <div class="MyCotggamptron">
+            <div class="container MyHomeContainer">
+                <div class="item-grid MyCatggr">
+                    <div class="row">
+                        <h1 class="pull-left" style="color:#fff">Our Services</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <hr class="Myhr pull-left" style="width:80px; border: 2px solid #ffd800;" />
+                        </div>
+
+                        <div class="col-xs-4">
+                            <a href="#"><img class="pull-right" style="margin-left:5px;" src="~/Themes/NewTheme/Content/images/Arrows/aro2.png" /></a>
+                            <a href="#"><img class="pull-right" style="margin-left:5px;" src="~/Themes/NewTheme/Content/images/Arrows/aro1.png" /></a>
+                        </div>
+                    </div>
+
+                    <div class="row MyCatgrow">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 MyCustCol">
+                                <a class="MyCatga" href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                    <div class="Mydiv">
+                                        <div class="background" style="background-image:url(@item.PictureModel.ImageUrl);">
+                                            <div class="Mydiv2">
+                                                <div class="transbox">
+                                                    <p>@item.Name</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@*<div class="category-grid home-page-category-grid" style="margin-bottom:180px;">
+        <div class="MyCotggamptron">
+            <div class="container MyHomeContainer">
+                <div class="item-grid MyCatggr">
+
+                    <div class="row">
+                        <h1 class="pull-left" style="color:#fff">Our Services</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <hr class="Myhr pull-left" style="width:80px; border: 2px solid #ffd800;" />
+                        </div>
+
+                        <div class="col-xs-4">
+                            <a class="left carousel-control pull-right" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <img class="pull-right" style="margin-left:5px;" src="~/Themes/NewTheme/Content/images/Arrows/aro2.png" />
+                            </a>
+
+                            <a class="right carousel-control pull-right" href="#carousel-example-generic" role="button" data-slide="next">
+                                <img class="pull-right" style="margin-left:5px;" src="~/Themes/NewTheme/Content/images/Arrows/aro1.png" />
+                            </a>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row MyCatgrow">
+
+
+
+
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+
+
+                            <div class="carousel-inner" role="listbox">
+
+                                <div class="item active">
+                                    <div class="background" style="background-image:url('~/Themes/NewTheme/Content/images/Adv/adv1.png');"></div>
+                                    <div class="carousel-caption">
+                                        .sasdasd
+                                    </div>
+                                </div>
+
+                                @foreach (var item in Model)
+                                {
+                                    <div class="item ">
+                                        <img src="~/Themes/NewTheme/Content/images/Adv/adv1.png" />
+                                        <div class="carousel-caption">
+                                            .sasdasd
+                                        </div>
+                                    </div>
+
+                                }
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+@*<div class="category-grid home-page-category-grid" style="margin-bottom:180px;">
+        <div class="MyCotggamptron">
+            <div class="container MyHomeContainer">
+                <div class="item-grid MyCatggr">
+
+                    <div class="row">
+                        <h1 class="pull-left" style="color:#fff">Our Services</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <hr class="Myhr pull-left" style="width:80px; border: 2px solid #ffd800;" />
+                        </div>
+
+                        <div class="col-xs-4">
+                            <a href="#"><img class="pull-right" style="margin-left:5px;" src="~/Themes/NewTheme/Content/images/Arrows/aro2.png" /></a>
+                            <a href="#"><img class="pull-right" style="margin-left:5px;" src="~/Themes/NewTheme/Content/images/Arrows/aro1.png" /></a>
+                        </div>
+                    </div>
+
+                    <div class="row MyCatgrow">
+
+
+
+
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 MyCustCol">
+                                <a class="MyCatga" href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                    <div class="Mydiv">
+                                        <div class="background" style="background-image:url(@item.PictureModel.ImageUrl);">
+                                            <div class="Mydiv2">
+                                                <div class="transbox">
+                                                    <p>@item.Name</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+
+@*<div class="item-box">
+        <div class="category-item">
+            <h2 class="title">
+                <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                    @item.Name
+                </a>
+            </h2>
+            <div class="picture">
+                <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                    <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
+                </a>
+            </div>
+        </div>
+    </div>*@

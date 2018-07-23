@@ -1,0 +1,203 @@
+﻿@model TopMenuModel
+
+
+<nav class="navbar navbar-inverse " data-offset-top="197">
+
+    <style>
+        .Mytopmbg .Mytopbut:active,
+        .Mytopmbg .Mytopbut:link,
+        .Mytopmbg .Mytopbut:visited,
+        .Mytopmbg .Mytopbut:focus {
+            color: #fff !important;
+            background-color: #f1be38 !important;
+            border-color: #f0bd37 !important;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-header">
+                @await Component.InvokeAsync("Logo")
+            </div>
+
+            <ul class="nav navbar-nav Mytopmresp" style="font-size: 17px; padding: 15px; position: relative; z-index: 100;">
+                @await Component.InvokeAsync("Widget", new { widgetZone = "header_menu_before" })
+
+                @if (Model.DisplayHomePageMenuItem)
+                {
+                    <li>
+                        <a style="padding: 12px;" href="@Url.RouteUrl("HomePage")">
+                            <img src="~/Themes/NewTheme/Content/images/Hpic/HHicon.gif" />
+                        </a>
+                    </li>
+                }
+
+                @{
+                    var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
+                }
+
+                @foreach (var category in rootCategories)
+                {
+                    var categoryLineModel = new TopMenuModel.CategoryLineModel
+                    {
+                        Category = category
+                    };
+                    @await Html.PartialAsync("_CategoryLine.TopMenu", categoryLineModel)
+                }
+
+                @*@foreach (var topic in Model.Topics)
+                    {
+                        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                    }
+                    @if (Model.NewProductsEnabled && Model.DisplayNewProductsMenuItem)
+                    {
+                        <li><a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a></li>
+                    }
+                    @if (Model.DisplayProductSearchMenuItem)
+                    {
+                        <li><a href="@Url.RouteUrl("ProductSearch")">@T("Search")</a></li>
+                    }
+                    @if (Model.DisplayCustomerInfoMenuItem)
+                    {
+                        <li><a href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a></li>
+                    }
+                    @if (Model.BlogEnabled && Model.DisplayBlogMenuItem)
+                    {
+                        <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
+                    }
+                    @if (Model.ForumEnabled && Model.DisplayForumsMenuItem)
+                    {
+                        <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
+                    }
+                    @if (Model.DisplayContactUsMenuItem)
+                    {
+                        <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                    }
+                    @await Component.InvokeAsync("Widget", new { widgetZone = "header_menu_after" })*@
+            </ul>
+        </div>
+
+        <style>
+        </style>
+
+        <div class="row">
+            <div class="col-lg-3 MyCustCol">
+                <div class="btn-group Mytopmbg">
+                    <button type="button" class="btn btn-default dropdown-toggle Mytopbut" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="pull-left Mytopmimg" src="~/Themes/NewTheme/Content/images/Hpic/Tmicon.png" />
+                        Categories
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu Mytopmddm">
+                        <li><a href="#">Bisics</a></li>
+                        <li><a href="#">Exteiro</a></li>
+                        <li><a href="#">Decoration</a></li>
+                        @*<li role="separator" class="divider">Accessories</li>*@
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Electricety</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9 MyCustCol">
+                <form class="navbar-form navbar-right hidden-md" asp-route="ProductSearch" method="get" id="menuSearchbox" style="width:100%; padding:0; margin:0;">
+                    <div class="input-group input-group-sm MytopmIn">
+                        <input type="text" class="form-control" placeholder="@T("Search.SearchBox.Tooltip")" aria-describedby="basic-addon2" id="small-searchphrase">
+                        @*<img class="input-group-addon" src="~/Themes/NewTheme/Content/images/SIco.png" />*@
+                        <a class="input-group-addon" href="#" style="padding:0; width:36px;"><img src="~/Themes/NewTheme/Content/images/SIco.png" /></a>
+                        @*<span class="input-group-addon" id="basic-addon2" style="padding:0; width:36px;"></span>*@
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" asp-location="Footer">
+            $(document).ready(function() {
+                $('#small-searchphrase').autocomplete({
+                        delay: 500,
+                        minLength: 3,
+                        source: '@(Url.RouteUrl("ProductSearchAutoComplete"))',
+                        appendTo: '#menuSearchbox',
+                        select: function(event, ui) {
+                            $("#small-searchphrase").val(ui.item.label);
+                            setLocation(ui.item.producturl);
+                            return false;
+                        }
+                    })
+                    .data("ui-autocomplete")._renderItem = function(ul, item) {
+                        var t = item.label;
+                        //html encode
+                        t = htmlEncode(t);
+                        return $("<li></li>")
+                            .data("item.autocomplete", item)
+                            .append("<a><span>" + t + "</span></a>")
+                            .appendTo(ul);
+                    };
+            });
+        </script>
+    </div>
+</nav>
+@{
+    var rootCategoriesResponsive = Model.Categories.ToList();
+    //name it "Categories" if we have only categories. Otherwise, "Menu"
+    var responsiveMenuTitle = Model.HasOnlyCategories ? T("Categories") : T("Menu");
+    <div class="menu-toggle">@responsiveMenuTitle</div>
+    <ul class="top-menu mobile">
+        @await Component.InvokeAsync("Widget", new { widgetZone = "mob_header_menu_before" })
+        @if (Model.DisplayHomePageMenuItem)
+        {
+            <li><a href="@Url.RouteUrl("HomePage")">@T("HomePage")</a></li>
+        }
+        @foreach (var category in rootCategoriesResponsive)
+        {
+            var categoryLineModel = new TopMenuModel.CategoryLineModel
+            {
+                Category = category,
+                ResponsiveMobileMenu = true
+            };
+            @await Html.PartialAsync("_CategoryLine.TopMenu", categoryLineModel)
+        }
+        @*@foreach (var topic in Model.Topics)
+            {
+                <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+            }
+            @if (Model.NewProductsEnabled && Model.DisplayNewProductsMenuItem)
+            {
+                <li><a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a></li>
+            }
+            @if (Model.DisplayProductSearchMenuItem)
+            {
+                <li><a href="@Url.RouteUrl("ProductSearch")">@T("Search")</a></li>
+            }
+            @if (Model.DisplayCustomerInfoMenuItem)
+            {
+                <li><a href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a></li>
+            }
+            @if (Model.BlogEnabled && Model.DisplayBlogMenuItem)
+            {
+                <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
+            }
+            @if (Model.ForumEnabled && Model.DisplayForumsMenuItem)
+            {
+                <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
+            }
+            @if (Model.DisplayContactUsMenuItem)
+            {
+                <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+            }*@
+        @await Component.InvokeAsync("Widget", new { widgetZone = "mob_header_menu_after" })
+    </ul>
+
+    <script type="text/javascript" asp-location="Footer">
+        $(document).ready(function () {
+            $('.menu-toggle').click(function () {
+                $(this).siblings('.top-menu.mobile').slideToggle('slow');
+            });
+            $('.top-menu.mobile .sublist-toggle').click(function () {
+                $(this).siblings('.sublist').slideToggle('slow');
+            });
+        });
+    </script>
+}

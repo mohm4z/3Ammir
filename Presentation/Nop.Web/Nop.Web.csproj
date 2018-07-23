@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <Copyright>Copyright © Nop Solutions, Ltd</Copyright>
+    <Company>Nop Solutions, Ltd</Company>
+    <Authors>Nop Solutions, Ltd</Authors>
+    <Version>4.0.0.0</Version>
+    <Description>Nop.Web is also an MVC web application project, a presentation layer for public store and admin area.</Description>
+    <PackageLicenseUrl>http://www.nopcommerce.com/licensev3.aspx</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.nopcommerce.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nopSolutions/nopCommerce</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <ApplicationIcon>logo2_yW6_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Nop.Core\Nop.Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\Nop.Data\Nop.Data.csproj" />
+    <ProjectReference Include="..\..\Libraries\Nop.Services\Nop.Services.csproj" />
+    <ProjectReference Include="..\Nop.Web.Framework\Nop.Web.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- We copy the entire \App_Data directory. But we ignore JSON files and data protection keys  -->
+    <Content Include="App_Data\**" CopyToPublishDirectory="PreserveNewest" Exclude="App_Data\*.json" />
+    <Content Update="App_Data\*.json" CopyToPublishDirectory="Never" />
+    <Content Update="App_Data\DataProtectionKeys\*.xml" CopyToPublishDirectory="Never" />
+    <Compile Remove="%2a%2a\**" />
+
+    <Compile Remove="Plugins\**" />
+
+    <Content Remove="%2a%2a\**" />
+
+    <EmbeddedResource Remove="%2a%2a\**" />
+    <EmbeddedResource Remove="Plugins\**" />
+    <None Remove="%2a%2a\**" />
+    <None Remove="Plugins\**" />
+
+    <!-- We copy the entire \Plugins and \Themes directories.
+	    But we ignore cshtml and JSON files to avoid "Duplicate 'Content' items were included" error during publishing.
+	    We also can use "CheckForDuplicateItemsContinueOnError" as per https://github.com/dotnet/sdk/blob/master/src/Tasks/Microsoft.NET.Build.Tasks/build/Microsoft.NET.Sdk.DefaultItems.targets -->
+    <Content Include="Plugins\**" CopyToPublishDirectory="PreserveNewest" Exclude="Plugins\**\*.config;Plugins\**\*.cshtml;Plugins\**\*.json" />
+    <Content Include="Themes\**" CopyToPublishDirectory="PreserveNewest" Exclude="Themes\**\*.config;Themes\**\*.cshtml;Themes\**\*.json" />
+
+    <!-- We copy the \Logs directory -->
+    <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
+    <None Remove="Themes\NewTheme\Content\css\Slid\SlidCss.css" />
+    <None Remove="Themes\NewTheme\Content\css\SmSl\default.css" />
+    <None Remove="Themes\NewTheme\Content\css\SmSl\reset.css" />
+    <None Remove="Themes\NewTheme\Content\css\SmSl\slideshow.css" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv1.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv2.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv3.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv4.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv5.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv6.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\adv7.png" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\image1.jpg" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\image2.jpg" />
+    <None Remove="Themes\NewTheme\Content\images\Adv\image3.jpg" />
+    <None Remove="Themes\NewTheme\Content\images\Arrows\aro1.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Arrows\aro1.png" />
+    <None Remove="Themes\NewTheme\Content\images\Arrows\aro2.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Arrows\aro2.png" />
+    <None Remove="Themes\NewTheme\Content\images\Flogo.png" />
+    <None Remove="Themes\NewTheme\Content\images\FotrtImgs\amrexp.png" />
+    <None Remove="Themes\NewTheme\Content\images\FotrtImgs\mastcard.png" />
+    <None Remove="Themes\NewTheme\Content\images\FotrtImgs\visa.png" />
+    <None Remove="Themes\NewTheme\Content\images\Hpic\Bicon.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Hpic\HHicon.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Hpic\Hp1.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Hpic\Hp2.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Hpic\Hp3.gif" />
+    <None Remove="Themes\NewTheme\Content\images\Hpic\Tmicon.png" />
+    <None Remove="Themes\NewTheme\Content\images\logo.png" />
+    <None Remove="Themes\NewTheme\Content\images\msicon.png" />
+    <None Remove="Themes\NewTheme\Content\images\Ps.gif" />
+    <None Remove="Themes\NewTheme\Content\images\SIco.png" />
+    <None Remove="Themes\NewTheme\Content\images\tlicon.png" />
+    <None Remove="Themes\NewTheme\Content\scripts\Slid\Slidjs.js" />
+
+    <None Update="Areas\Admin\sitemap.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- This target execute after "Build" target.
+    We use it to clean up folder with plugins from unnecessary and obsolete libraries. -->
+  <Target Name="NopTarget" AfterTargets="Build">
+    <ItemGroup>
+      <!-- Get all the libraries from the shadow copy folder to remove them,
+        because depending on the settings, this may not happen when the application is starting,
+        but this can lead to unpredictable results during debugging of the project. -->
+      <ShadowCopiesLibraries Include="$(MSBuildProjectDirectory)\Plugins\bin\*.*" Exclude="$(MSBuildProjectDirectory)\Plugins\bin\placeholder.txt" />
+    </ItemGroup>
+    <!-- Delete libraries from the shadow copy folder -->
+    <Delete Files="@(ShadowCopiesLibraries)" />
+    <!-- When .NET Core builds a project, it copies all referenced libraries to the output folder.
+      For plugins it creates too many unnecessary files that just take up space.
+      At the moment you can't disable this behavior. That's why we have to manually delete all unnecessary libraries from plugin output directories. -->
+    <MSBuild Projects="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" Targets="NopClear" />
+  </Target>
+
+</Project>

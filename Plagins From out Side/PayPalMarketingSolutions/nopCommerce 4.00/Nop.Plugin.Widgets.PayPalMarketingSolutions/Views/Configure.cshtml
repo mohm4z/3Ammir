@@ -1,0 +1,165 @@
+﻿@model Nop.Plugin.Widgets.PayPalMarketingSolutions.Models.ConfigurationModel;
+
+@{
+    Layout = "_ConfigurePlugin";
+
+    //Loading CSS file
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Plugins/Widgets.PayPalMarketingSolutions/Content/pppi.css");
+}
+@await Component.InvokeAsync("StoreScopeConfiguration");
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="wrap">
+                            <div class="paypal_promotions_container">
+                                <div class="paypal_promotions_container__box">
+                                    <div class="paypal_promotions_container__header-banner"></div>
+                                    <div class="paypal_promotions_container__header-text">
+                                        <h2 class="paypal_big_header">
+                                            Help increase sales through the power of PayPal shopping data with targeted promotions
+                                        </h2>
+                                    </div>
+                                    <div class="paypal_promotions_container__content">
+                                        <span>
+                                            PayPal for Marketing - a suite of marketing solutions to help businesses increase sales through greater visibility into the marketing funnel and actionable promotional messages at every step in the customer journey.
+                                        </span>
+                                    </div>
+                                    <div class="paypal_promotions_container__action-btn">
+                                        <div id='muse-activate-managesettings-button'></div>
+                                    </div>
+                                    <div class="paypal_promotions_container__row">
+                                        <div class="row__item">
+                                            <div class="item__image item__image-first">
+                                                <div>68%</div>
+                                            </div>
+                                            <div class="item__text">
+                                                Merchants like you have increased their average order value (AOV) by <b>up to 68%*</b>
+                                            </div>
+                                        </div>
+                                        <div class="row__item">
+                                            <div class="item__image item__image-second"></div>
+                                            <div class="item__text">
+                                                Join <b>20,000 merchants</b> who are promoting financing options on their site to boost sales
+                                            </div>
+                                        </div>
+                                        <div class="row__item">
+                                            <div class="item__image item__image-third"></div>
+                                            <div class="item__text">
+                                                <b>Get insights</b> about your visitors and how they shop on your site
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box__footer">
+                                        * As reported in Nielsen’s PayPal Credit Average Order Value Study for activity occurring from April 2015 to March 2016 (small merchants) and October 2015 to March 2016 (midsize merchants), which compared PayPal Credit transactions to credit and debit card transactions on websites that offer PayPal Credit as a payment option or within the PayPal Wallet. Nielsen measured 284890 transactions across 27 mid and small merchants. Copyright Nielsen 2016.
+                                    </div>
+                                </div>
+
+                                <div class="paypal_promotions__maccordion_wrapper">
+                                    <div class="maccordion">How do I enable Marketing Solutions?</div>
+                                    <div class="mpanel">
+                                        <ol>
+                                            <li>Click on "Activate PayPal Insights"</li>
+                                            <li>Login to PayPal with your PayPal Business Account. This account will get valuable insights from data gathered about PayPal shoppers browsing your site.</li>
+                                            <li>Enter your Website URL and click on Agree and Continue. On the next screen, click Done.</li>
+                                            <li>PayPal Marketing Solutions is now enabled on your storefront.</li>
+                                        </ol>
+                                        <div class="faq__info">
+                                            Note:
+                                        </div>
+                                        <ul>
+                                            <li>Your customers will see a one-line message at the bottom of the screen reminding them they can have more time to pay with PayPal Credit</li>
+                                            <li>The message can be dismissed in one click, and only shows up to 3 times per user session.</li>
+                                            <li>If the message has been dismissed and has to be viewed again, clear the browser's cache and cookies and reload the page.</li>
+                                            <li>Once you’ve connected your PayPal Business account, you will not be able to change the account. You will have to uninstall and reinstall the app to connect a new PayPal account.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="maccordion">How do I disable Marketing Solutions and update my settings?</div>
+                                    <div class="mpanel">
+                                        <ol>
+                                            <li>Click on "Manage Settings".</li>
+                                            <li>Login to PayPal with your PayPal Business Account.</li>
+                                            <li>Here you will be able to disable Shopper Marketing Solutions.</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="maccordion">How do I uninstall the Marketing Solutions App?</div>
+                                    <div class="mpanel">
+                                        <ol>
+                                            <li>Go to the "Configuration -> Plugins -> Local Plugins" page.</li>
+                                            <li>Find PayPal Marketing Solutions plugin and click uninstall.</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="maccordion">Who can help if I have questions?</div>
+                                    <div class="mpanel">
+                                        <div class="faq__info">
+                                            Please contact PayPal by following this <a href="https://www.paypal.com/us/selfhelp/home">link</a>.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script src='@Model.AdminScriptSrc'></script>  
+                        <script>
+                            jQuery(document).ready(function ($) {
+                
+                                var muse_options = {
+                                    onContainerCreate: callback_onsuccess,
+                                    hn: window.location.origin,                                
+                                    partner_name: "NopCommerce",                   
+                                    bn_code: "ITECHART_NOPCOMMERCE",                       
+                                    env: "production",                     
+                                    cid: "@Model.ContainerId"               
+                                };
+
+                                function callback_onsuccess(containerId) {
+                                    muse_options.cid = containerId;
+                                    var securityTokenInput = jQuery("input[name='__RequestVerificationToken']");
+                                    if (securityTokenInput) {
+                                        var form = securityTokenInput.parent().last();
+                                        if (form) {
+                                            var data = {
+                                                '__RequestVerificationToken': securityTokenInput.val(),
+                                                'ContainerId': containerId
+                                            };
+
+                                            jQuery.post(form.attr('action'), data);
+                                        }
+                                    }
+                                }
+
+                                MUSEButton('muse-activate-managesettings-button', muse_options);
+                            });
+                        </script>
+
+                        <script>
+                            var acc = document.getElementsByClassName("maccordion");
+                            var i;
+                            for (i = 0; i < acc.length; i++) {
+                                acc[i].onclick = function() {
+                                    /* Toggle between adding and removing the "active" class,
+                                    to highlight the button that controls the mpanel */
+                                    this.classList.toggle("active");
+                                    /* Toggle between hiding and showing the active mpanel */
+                                    var panel = this.nextElementSibling;
+                                    if (panel.style.display === "block") {
+                                        panel.style.display = "none";
+                                    } else {
+                                        panel.style.display = "block";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

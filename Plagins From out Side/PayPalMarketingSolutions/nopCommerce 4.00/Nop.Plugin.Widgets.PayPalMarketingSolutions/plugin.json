@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Widgets",
+  "FriendlyName": "PayPal Marketing Solutions",
+  "SystemName": "Widgets.PayPalMarketingSolutions",
+  "Version": "1.1",
+  "SupportedVersions": [ "4.00" ],
+  "Author": "iTechArt-Group",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Widgets.PayPalMarketingSolutions.dll",
+  "Description": "This plugin provides you relevant Marketing Solutions from PayPal"
+}
