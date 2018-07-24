@@ -7145,7 +7145,7 @@ button.close {
 
 @media (min-width:992px) and (max-width:1199px) {
     .hidden-md {
-        display: none !important
+        /*display: none !important*/
     }
 }
 
