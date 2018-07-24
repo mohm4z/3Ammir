@@ -56,6 +56,8 @@
 
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
+    <Content Remove="wwwroot\bundles\_6g6lxgria4r1idm2z-vu4bhjrio4x3qqeevcvyfewk.css" />
+    <Content Remove="wwwroot\bundles\_6g6lxgria4r1idm2z-vu4bhjrio4x3qqeevcvyfewk.min.css" />
     <None Remove="Themes\NewTheme\Content\css\Slid\SlidCss.css" />
     <None Remove="Themes\NewTheme\Content\css\SmSl\default.css" />
     <None Remove="Themes\NewTheme\Content\css\SmSl\reset.css" />
@@ -94,6 +96,10 @@
     <None Update="Areas\Admin\sitemap.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\bundles\" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target.
