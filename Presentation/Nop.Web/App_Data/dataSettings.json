@@ -1,11 +1,5 @@
-//{
-//  "DataProvider": "sqlserver",
-//  "DataConnectionString": "Data Source=MOHM4Z_ASUS\\SQLEXPRESS;Initial Catalog=TelenocDB;Persist Security Info=True;User ID=sa;Password=123456",
-//  "RawDataSettings": {}
-//}
-
 {
   "DataProvider": "sqlserver",
-  "DataConnectionString": "Data Source=SERVER214\\SQLEXPRESS;Initial Catalog=TelenocDB;Persist Security Info=True;User ID=sa;Password=123456",
+  "DataConnectionString": "Data Source=MOHM4Z_ASUS\\SQLEXPRESS;Initial Catalog=TelenocDB;Persist Security Info=True;User ID=sa;Password=123456",
   "RawDataSettings": {}
 }

@@ -4132,7 +4132,7 @@ namespace Nop.Services.Installation
                 PhoneNumber = "12345678",
                 Email = defaultUserEmail,
                 FaxNumber = "",
-                Company = "Nop Solutions Ltd",
+                Company = "TeleNoc Ltd",
                 Address1 = "21 West 52nd Street",
                 Address2 = "",
                 City = "New York",
